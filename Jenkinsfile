@@ -8,6 +8,14 @@ pipeline {
                 archiveArtifacts artifacts: 'dist/trainSchedule.zip'
             }
         }
+        stage('Initialize') {
+            steps {
+                script {
+                    properties([pipelineTriggers([pollSCM('')])])
+                }
+                git branch: master, credentialsId: 'github_apikey', url: 'git@github.com:testuser340/cicd-pipeline-train-schedule-dockerdeploy.git'
+            }
+        }
         stage('Build Docker Image') {
             when {
                 branch 'master'
