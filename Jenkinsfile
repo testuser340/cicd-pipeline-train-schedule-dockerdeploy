@@ -13,7 +13,7 @@ pipeline {
                 script {
                     properties([pipelineTriggers([pollSCM('')])])
                 }
-                git branch: master, credentialsId: 'github_apikey', url: 'git@github.com:testuser340/cicd-pipeline-train-schedule-dockerdeploy.git'
+                 credentialsId: 'github_apikey', url: 'git@github.com:testuser340/cicd-pipeline-train-schedule-dockerdeploy.git'
             }
         }
         stage('Build Docker Image') {
